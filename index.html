@@ -14,7 +14,6 @@
         <button id="shuffleButton">Mezclar Ranking</button>
         <button id="captureButton">Crear Imagen PNG</button>
         <div id="ranking" class="ranking-list">
-            <!-- Lista de canciones generada dinámicamente -->
         </div>
         <div id="imageResult"></div> <!-- Contenedor para mostrar la imagen generada -->
     </div>
@@ -56,7 +55,6 @@
                     }
                     listItem.appendChild(number);
 
-                    // Imagen de la canción
                     const img = document.createElement('img');
                     img.src = cancion.img; // Ruta de la imagen
                     img.alt = `Imagen de ${cancion.title}`;
@@ -124,10 +122,8 @@
             // Mostrar ranking inicial
             mostrarRanking();
 
-            // Evento para mezclar el ranking al hacer clic en el botón
             shuffleButton.addEventListener('click', mezclarRanking);
 
-            // Evento para crear la imagen al hacer clic en el botón
             captureButton.addEventListener('click', crearImagen);
         });
     </script>

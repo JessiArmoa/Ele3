@@ -60,14 +60,14 @@ button:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative; /* Para posicionar las flechas dentro de este contenedor */
-    width: 40px; /* Asegura que el círculo tenga suficiente tamaño */
-    height: 40px; /* Asegura que el círculo tenga suficiente tamaño */
+    position: relative; 
+    width: 40px; 
+    height: 40px; 
 }
 
 .song-number .arrow {
-    position: absolute; /* Hace que las flechas estén dentro del número */
-    top: 50%; /* Ajuste para centrar la flecha verticalmente */
+    position: absolute; 
+    top: 50%; 
     left: 50%;
     transform: translate(-50%, -50%); /* Centra las flechas dentro del círculo */
     font-size: 16px;
@@ -96,8 +96,8 @@ button:hover {
     padding: 8px;
     margin-bottom: 5px;
     clip-path: polygon(0% 0%, 100% 0%, 90% 100%, 0% 100%);
-    width: 120px; /* Esto establece un ancho fijo */
-    height: 25px; /* Esto establece un alto fijo */
+    width: 120px; 
+    height: 25px;
 }
 
 .song-artist {
@@ -132,8 +132,8 @@ button:hover {
 /* Ajuste de la flecha */
 .arrow {
     font-size: 16px; /* Ajuste de tamaño de las flechas */
-    color: black; /* Color básico para visualizar */
+    color: black;
     position: absolute; /* Posiciona las flechas dentro del número */
-    top: 60%; /* Ajusta la flecha en la parte superior */
+    top: 60%; 
     left: 4.4%;
 }

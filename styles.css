@@ -1,0 +1,139 @@
+/* Estilo general */
+body {
+    background-color: #2980b9;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+h1 {
+    text-align: center;
+    color: #fff;
+    background-color: #e74c3c;
+    margin: 0;
+    padding: 15px;
+    font-size: 24px;
+    border-bottom: 2px solid #c0392b;
+}
+
+button {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #27ae60;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #2ecc71;
+}
+
+/* Lista de canciones */
+.ranking-list {
+    margin: 20px auto;
+    width: 90%;
+    max-width: 600px;
+    list-style: none;
+    padding: 0;
+}
+
+.song-item {
+    display: flex;
+    align-items: center;
+    margin: 15px 0;
+    position: relative;
+}
+
+.song-number {
+    background-color: #1d0aed;
+    color: #fff;
+    font-size: 12px;
+    padding: 10px;
+    border-radius: 50%;
+    font-weight: bold;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative; /* Para posicionar las flechas dentro de este contenedor */
+    width: 40px; /* Asegura que el círculo tenga suficiente tamaño */
+    height: 40px; /* Asegura que el círculo tenga suficiente tamaño */
+}
+
+.song-number .arrow {
+    position: absolute; /* Hace que las flechas estén dentro del número */
+    top: 50%; /* Ajuste para centrar la flecha verticalmente */
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centra las flechas dentro del círculo */
+    font-size: 16px;
+}
+
+/* Imagen de la canción */
+.song-item img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 15px;
+    border: 2px solid #2980b9;
+}
+
+.song-info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.song-title {
+    background-color: #e74c3c;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 8px;
+    margin-bottom: 5px;
+    clip-path: polygon(0% 0%, 100% 0%, 90% 100%, 0% 100%);
+    width: 120px; /* Esto establece un ancho fijo */
+    height: 25px; /* Esto establece un alto fijo */
+}
+
+.song-artist {
+    background-color: #2ecc71;
+    color: #fff;
+    font-size: 12px;
+    padding: 6px;
+    clip-path: polygon(0% 0%, 100% 0%, 90% 100%, 0% 100%);
+    width: 350px; /* Esto establece un alto fijo */
+
+}
+
+.no-change::after {
+    content: '-';
+    color: gray;
+    margin-left: 5px;
+    font-size: 16px;
+}
+
+.star {
+    color: gold;
+    font-size: 18px;
+    margin-left: 10px;
+}
+
+.song-number span {
+    margin-left: 5px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Ajuste de la flecha */
+.arrow {
+    font-size: 16px; /* Ajuste de tamaño de las flechas */
+    color: black; /* Color básico para visualizar */
+    position: absolute; /* Posiciona las flechas dentro del número */
+    top: 60%; /* Ajusta la flecha en la parte superior */
+    left: 4.4%;
+}

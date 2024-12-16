@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top 5 Canciones</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Diseño de Aplicaciones Web y Mobile - Top 5</h1>
+        <button id="shuffleButton">Mezclar Ranking</button>
+        <button id="captureButton">Crear Imagen PNG</button>
+        <div id="ranking" class="ranking-list">
+            <!-- Lista de canciones generada dinámicamente -->
+        </div>
+        <div id="imageResult"></div> <!-- Contenedor para mostrar la imagen generada -->
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const ranking = document.getElementById('ranking');
+            const shuffleButton = document.getElementById('shuffleButton');
+            const captureButton = document.getElementById('captureButton');
+
+            // Lista de canciones
+            const canciones = [
+                { title: "Tiburones en el Bosque", artist: "Cuarteto de Nos", img: "images/cancion1.jpg"},
+                { title: "Torero", artist: "Chayanne", img: "images/cancion2.jpg"},
+                { title: "Yellow", artist: "Coldplay  ", img: "images/cancion3.jpg"},
+                { title: "Loco", artist: "Beéle", img: "images/cancion4.jpg"},
+                { title: "Boom Clap", artist: "Charlie xcx", img: "images/cancion5.jpg" }
+            ];
+
+            let previousRanking = [...canciones]; // Para comparación inicial
+
+            // Función para mostrar las canciones en el HTML
+            function mostrarRanking() {
+                ranking.innerHTML = '';
+                canciones.forEach((cancion, index) => {
+                    const listItem = document.createElement('div');
+                    listItem.classList.add('song-item');
+
+                    // Número de la canción
+                    const number = document.createElement('div');
+                    number.classList.add('song-number');
+                    number.textContent = `${index + 1}`;
+
+                    // Añadir estrella si es el primer lugar
+                    if (index === 0) {
+                        const star = document.createElement('span');
+                        star.classList.add('star');
+                        star.textContent = '★';
+                        number.appendChild(star);
+                    }
+                    listItem.appendChild(number);
+
+                    // Imagen de la canción
+                    const img = document.createElement('img');
+                    img.src = cancion.img; // Ruta de la imagen
+                    img.alt = `Imagen de ${cancion.title}`;
+                    listItem.appendChild(img);
+
+                    // Contenedor de la información
+                    const info = document.createElement('div');
+                    info.classList.add('song-info');
+
+                    // Título de la canción
+                    const title = document.createElement('div');
+                    title.classList.add('song-title');
+                    title.textContent = cancion.title;
+                    info.appendChild(title);
+
+                    // Artista
+                    const artist = document.createElement('div');
+                    artist.classList.add('song-artist');
+                    artist.textContent = cancion.artist;
+                    info.appendChild(artist);
+
+                    // Flecha o guion según cambio de posición
+                    const arrow = document.createElement('div');
+                    arrow.classList.add('arrow');
+                    const prevIndex = previousRanking.findIndex(item => item.title === cancion.title);
+                    if (prevIndex > index) {
+                        arrow.textContent = '⬆'; // Subió en el ranking
+                    } else if (prevIndex < index) {
+                        arrow.textContent = '⬇'; // Bajó en el ranking
+                    } else {
+                        arrow.textContent = '*'; // No cambió
+                    }
+                    listItem.appendChild(arrow);
+
+                    listItem.appendChild(info);
+                    ranking.appendChild(listItem);
+                });
+            }
+
+            // Función para mezclar el ranking
+            function mezclarRanking() {
+                for (let i = canciones.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [canciones[i], canciones[j]] = [canciones[j], canciones[i]]; // Intercambia los elementos
+                }
+                mostrarRanking(); // Actualiza el ranking después de mezclar
+                previousRanking = [...canciones]; // Actualizar el ranking anterior
+            }
+
+            // Función para crear la imagen PNG
+            function crearImagen() {
+                html2canvas(ranking).then(canvas => {
+                    const imageResult = document.getElementById('imageResult');
+                    imageResult.innerHTML = ''; // Limpia la imagen anterior
+                    imageResult.appendChild(canvas); // Muestra la nueva imagen
+
+                    // Opción para descargar la imagen como archivo PNG
+                    const link = document.createElement("a");
+                    link.href = canvas.toDataURL("image/png");
+                    link.download = "ranking.png"; // Nombre del archivo
+                    link.click(); // Iniciar la descarga
+                });
+            }
+
+            // Mostrar ranking inicial
+            mostrarRanking();
+
+            // Evento para mezclar el ranking al hacer clic en el botón
+            shuffleButton.addEventListener('click', mezclarRanking);
+
+            // Evento para crear la imagen al hacer clic en el botón
+            captureButton.addEventListener('click', crearImagen);
+        });
+    </script>
+</body>
+</html>

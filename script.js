@@ -19,6 +19,8 @@ document.addEventListener('DOMContentLoaded', function () {
         canciones.forEach((cancion, index) => {
             const item = document.createElement('div');
             item.classList.add('song-item');
+                console.log('El ranking posee canciones añadidas');
+
 
             // Imagen y contenedor centrado
             const imgContainer = document.createElement('div');
